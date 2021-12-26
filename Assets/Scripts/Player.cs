@@ -2,34 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace ATP1_CW2
 {
-    Animator animator;
-    Rigidbody2D rigidBody;
-
-    private void Awake()
+    public enum PlayerState
     {
-        animator = GetComponent<Animator>();
-        rigidBody = GetComponent<Rigidbody2D>();
+        idle,
+        walk,
+        run,
+        jump,
     }
 
-    void Start()
+    public class Player : MonoBehaviour
     {
-        
-    }
+        Animator animator;
+        Rigidbody2D rigidBody;
 
-    void Update()
-    {
-        
-    }
+        public PlayerState playerState;
 
-    private void FixedUpdate()
-    {
-        Movement();
-    }
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+            rigidBody = GetComponent<Rigidbody2D>();
+        }
 
-    public void Movement()
-    {
-        float x = Input.GetAxis("Horizontal");
+        void Start()
+        {
+            playerState = PlayerState.idle;
+        }
+
+        void Update()
+        {
+
+        }
+
+        private void FixedUpdate()
+        {
+            if(playerState==PlayerState.walk)
+                Movement();
+        }
+
+        public void Movement()
+        {
+            float x = Input.GetAxis("Horizontal");
+            rigidBody.velocity = new Vector2(x + 2.5f, 0);
+            Debug.Log("X:"+ x);
+            animator.SetFloat("move", x);
+        }
     }
 }
