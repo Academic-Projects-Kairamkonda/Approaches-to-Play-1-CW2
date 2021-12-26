@@ -12,9 +12,10 @@ namespace ATP1_CW2
 
         private PlayerState playerState;
 
-        private float moveSpeed=4f;
+        [SerializeField]private float moveSpeed=4f;
+        [SerializeField]private float jumpHeight = 3f;
 
-        public bool flip = false;
+        public bool canJump=false;
 
         private void Awake()
         {
@@ -30,7 +31,8 @@ namespace ATP1_CW2
 
         void Update()
         {
-
+            if(canJump)
+            Jump();
         }
 
         private void FixedUpdate()
@@ -50,11 +52,24 @@ namespace ATP1_CW2
             {
                 spriteRenderer.flipX = false;
             }
+
             rigidBody.velocity = new Vector2(x* moveSpeed, rigidBody.velocity.y);
 
-            Debug.Log(rigidBody.velocity);
+            //Debug.Log(rigidBody.velocity*Time.deltaTime);
 
             animator.SetFloat("move", Mathf.Abs(x));
+        }
+
+        public void Jump()
+        {
+            float jump = Input.GetAxis("Jump");
+            rigidBody.AddForce(Vector2.up*jump * jumpHeight);
+        }
+
+        public void Dash()
+        {
+            Vector2 dashDir = new Vector2(transform.position.x, 0);
+            rigidBody.MovePosition(dashDir*3*Time.deltaTime);
         }
     }
 
