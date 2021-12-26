@@ -4,25 +4,23 @@ using UnityEngine;
 
 namespace ATP1_CW2
 {
-    public enum PlayerState
-    {
-        idle,
-        walk,
-        run,
-        jump,
-    }
-
     public class Player : MonoBehaviour
     {
         Animator animator;
         Rigidbody2D rigidBody;
+        SpriteRenderer spriteRenderer;
 
-        public PlayerState playerState;
+        private PlayerState playerState;
+
+        private float moveSpeed=4f;
+
+        public bool flip = false;
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         void Start()
@@ -37,16 +35,34 @@ namespace ATP1_CW2
 
         private void FixedUpdate()
         {
-            if(playerState==PlayerState.walk)
-                Movement();
+            Movement();
         }
 
         public void Movement()
         {
-            float x = Input.GetAxis("Horizontal");
-            rigidBody.velocity = new Vector2(x + 2.5f, 0);
-            Debug.Log("X:"+ x);
-            animator.SetFloat("move", x);
+            float x = Input.GetAxis("Horizontal"); //Debug.Log("X:" + x);
+
+            if(x<-0.1)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if(x>0.1)
+            {
+                spriteRenderer.flipX = false;
+            }
+            rigidBody.velocity = new Vector2(x* moveSpeed, rigidBody.velocity.y);
+
+            Debug.Log(rigidBody.velocity);
+
+            animator.SetFloat("move", Mathf.Abs(x));
         }
+    }
+
+    public enum PlayerState
+    {
+        idle,
+        walk,
+        run,
+        jump,
     }
 }
