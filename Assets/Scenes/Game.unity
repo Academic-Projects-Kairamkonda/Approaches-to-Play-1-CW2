@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517536027}
   - component: {fileID: 517536026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,8 +319,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  jumpHeight: 3
-  canJump: 1
+  jumpHeight: 20
+  distance: 1.5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &1170607001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -587,7 +590,7 @@ GameObject:
   - component: {fileID: 2012798315}
   - component: {fileID: 2012798314}
   - component: {fileID: 2012798316}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

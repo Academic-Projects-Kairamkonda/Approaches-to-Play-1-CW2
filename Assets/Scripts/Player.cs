@@ -13,9 +13,12 @@ namespace ATP1_CW2
         private PlayerState playerState;
 
         [SerializeField]private float moveSpeed=4f;
-        [SerializeField]private float jumpHeight = 3f;
+        [SerializeField]private float jumpHeight = 30f;
 
-        public bool canJump=false;
+
+        [Header("Jump Settings")]
+        [Range(0,10)]public float distance;
+        [SerializeField]private LayerMask layerMask;
 
         private void Awake()
         {
@@ -31,8 +34,17 @@ namespace ATP1_CW2
 
         void Update()
         {
-            if(canJump)
-            Jump();
+            RaycastHit2D hit;
+
+            hit = Physics2D.Raycast(transform.position, Vector2.down, distance, layerMask);
+
+            Vector3 down = transform.TransformDirection(Vector3.down) * distance;
+            Debug.DrawRay(transform.position, down, Color.green);
+
+            if (hit.collider!=null)
+            {
+                Jump();
+            }
         }
 
         private void FixedUpdate()
@@ -55,15 +67,17 @@ namespace ATP1_CW2
 
             rigidBody.velocity = new Vector2(x* moveSpeed, rigidBody.velocity.y);
 
-            //Debug.Log(rigidBody.velocity*Time.deltaTime);
-
             animator.SetFloat("move", Mathf.Abs(x));
         }
 
         public void Jump()
         {
             float jump = Input.GetAxis("Jump");
-            rigidBody.AddForce(Vector2.up*jump * jumpHeight);
+            rigidBody.AddForce(Vector2.up * jump * jumpHeight * Time.deltaTime, ForceMode2D.Impulse);
+
+            Debug.Log("Y:" + Mathf.Abs(rigidBody.velocity.y));
+            //animator.SetFloat("Jump", rigidBody.velocity.y);
+            animator.SetBool("CanJump", false);
         }
 
         public void Dash()
