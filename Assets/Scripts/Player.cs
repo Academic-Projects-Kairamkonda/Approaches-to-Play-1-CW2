@@ -77,7 +77,7 @@ namespace ATP1_CW2
 
             Debug.Log("Y:" + Mathf.Abs(rigidBody.velocity.y));
             //animator.SetFloat("Jump", rigidBody.velocity.y);
-            animator.SetBool("CanJump", false);
+            animator.SetBool("CanJump", false );
         }
 
         public void Dash()
