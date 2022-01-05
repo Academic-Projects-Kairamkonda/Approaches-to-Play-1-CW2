@@ -6,6 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Packages/Cainos/Pixel Art Platformer - Village Props/Scene/_Game_Knight.unity
-    guid: 6d2bf57e4f6e54d338cee96fb097f109
+    path: Assets/Packages/Cainos/Pixel Art Platformer - Village Props/Scene/Scene
+      Game.unity
+    guid: bb522a79480a4443da6fb85ace2d734e
   m_configObjects: {}
