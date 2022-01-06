@@ -6,22 +6,27 @@ namespace ATP1_CW2
 {
     public class GameData : MonoBehaviour
     {
+        //Checkpoint variables
         public Transform[] spawnPoints;
-
         public Checkpoint checkpoint;
 
+        //using to disable the movement and triggerring the death
+        private HeroKnight heroKnight;
+
+        //Using to trigger jump animation
         private Animator m_animator;
 
-        private HeroKnight heroKnight;
+        public GameObject resumePanel;
 
         private void Awake()
         {
-            m_animator = GetComponent<Animator>();
             heroKnight = GetComponent<HeroKnight>();
+            m_animator = GetComponent<Animator>();
         }
 
         private void Start()
         {
+            resumePanel.SetActive(false);
             UpdatePlayerPosition();
         }
 
@@ -66,13 +71,24 @@ namespace ATP1_CW2
             {
                 heroKnight.Death();
                 heroKnight.enabled = false;
+                StartCoroutine("FreezeTime");
             }
         }
 
         private IEnumerator FreezeTime()
         {
             yield return new WaitForSeconds(2);
-            Time.timeScale = 0;
+            resumePanel.SetActive(true);
+
+            StopCoroutine("FreezeTime");
+        }
+
+        public void Replay()
+        {
+            UpdatePlayerPosition();
+            resumePanel.SetActive(false);
+            heroKnight.enabled = true;
+            m_animator.SetTrigger("Jump");
         }
     }
 

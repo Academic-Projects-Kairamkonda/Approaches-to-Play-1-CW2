@@ -179,7 +179,6 @@ public class HeroKnight : MonoBehaviour {
     {
         m_animator.SetBool("noBlood", m_noBlood);
         m_animator.SetTrigger("Death");
-        
     }
 
     // Animation Events
