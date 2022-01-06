@@ -100,7 +100,9 @@ public class HeroKnight : MonoBehaviour {
         {
             m_animator.SetBool("noBlood", m_noBlood);
             m_animator.SetTrigger("Death");
+            Death();
         }
+
             
         //Hurt
         else if (Input.GetKeyDown("q") && !m_rolling)
@@ -171,6 +173,13 @@ public class HeroKnight : MonoBehaviour {
                 if(m_delayToIdle < 0)
                     m_animator.SetInteger("AnimState", 0);
         }
+    }
+
+    public void Death()
+    {
+        m_animator.SetBool("noBlood", m_noBlood);
+        m_animator.SetTrigger("Death");
+        
     }
 
     // Animation Events

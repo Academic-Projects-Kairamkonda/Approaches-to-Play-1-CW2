@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - CheckpointTwo
+  - Trap
   layers:
   - Default
   - TransparentFX
