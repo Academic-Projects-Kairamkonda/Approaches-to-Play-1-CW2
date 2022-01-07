@@ -98,6 +98,7 @@ namespace ATP1_CW2
             if (collision.gameObject.tag == "Trap")
             {
                 heroKnight.Death();
+                collision.gameObject.GetComponent<AudioSource>().Play();
                 heroKnight.enabled = false;
                 StartCoroutine("FreezeTime");
             }
