@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - CheckpointThree
   - CheckpointFour
+  - CheckpointFive
   layers:
   - Default
   - TransparentFX

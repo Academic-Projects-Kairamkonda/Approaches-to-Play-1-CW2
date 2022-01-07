@@ -50,6 +50,10 @@ namespace ATP1_CW2
                     this.transform.position = spawnPoints[3].transform.position;
                     break;
 
+                case Checkpoint.CheckpointFive:
+                    this.transform.position = spawnPoints[4].transform.position;
+                    break;
+
                 default:
                     break;
             }
@@ -75,6 +79,12 @@ namespace ATP1_CW2
             if (collision.gameObject.tag == "CheckpointFour")
             {
                 checkpoint = Checkpoint.CheckpointFour;
+            }
+
+
+            if (collision.gameObject.tag == "CheckpointFive")
+            {
+                checkpoint = Checkpoint.CheckpointFive;
             }
 
             if (collision.gameObject.tag == "Respawn")
@@ -115,6 +125,7 @@ namespace ATP1_CW2
         CheckpointOne,
         CheckpointTwo,
         CheckpointThree,
-        CheckpointFour
+        CheckpointFour,
+        CheckpointFive
     }
 }
