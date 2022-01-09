@@ -119,6 +119,11 @@ namespace ATP1_CW2
             heroKnight.enabled = true;
             m_animator.SetTrigger("Jump");
         }
+        public void Checkpoint1()
+        {
+            checkpoint = Checkpoint.CheckpointOne;
+            UpdatePlayerPosition();
+        }
     }
 
     public enum Checkpoint
@@ -129,4 +134,6 @@ namespace ATP1_CW2
         CheckpointFour,
         CheckpointFive
     }
+
+
 }
