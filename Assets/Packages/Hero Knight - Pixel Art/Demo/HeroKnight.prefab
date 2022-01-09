@@ -141,7 +141,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  checkpoint: 2
+  checkpoint: 0
   resumePanel: {fileID: 0}
 --- !u!95 &2655505060201611074
 Animator:

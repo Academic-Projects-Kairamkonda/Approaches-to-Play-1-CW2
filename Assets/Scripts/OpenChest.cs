@@ -8,6 +8,9 @@ public class OpenChest : MonoBehaviour
     private AudioSource audioBonus;
     public AudioClip audioClip;
 
+    public GameObject key;
+   
+
     private void Awake()
     {
         animator = this.GetComponent<Animator>();
@@ -19,6 +22,7 @@ public class OpenChest : MonoBehaviour
     {
         animator.SetBool("Open", true);
         audioBonus.PlayOneShot(audioClip);
+        key.gameObject.SetActive(false);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

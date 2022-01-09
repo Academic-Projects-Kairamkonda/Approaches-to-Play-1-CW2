@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public HeroKnight heroKnight;
+    public GameObject heroKnight;
+
 
     // Start is called before the first frame update
     void Start()
@@ -12,21 +13,22 @@ public class GameManager : MonoBehaviour
         KnightDisableControls();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void KnightDisableControls()
     {
-        heroKnight.enabled = false;
+        //heroKnight.enabled = false;
+        heroKnight.GetComponent<HeroKnight>().enabled = false;
     }
 
     public void KnightEnableControls()
     {
-        heroKnight.enabled = true;
-
+        //heroKnight.enabled = true;
+        heroKnight.GetComponent<HeroKnight>().enabled = true;
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        heroKnight.GetComponent<Animator>().SetInteger("AnimState", 0);
+        KnightDisableControls();
+    }
 }
