@@ -5,6 +5,9 @@ using UnityEngine;
 public class Teleport : MonoBehaviour
 {
     private AudioSource wooshAudio;
+    public AudioClip audioClip;
+
+    bool soundPlayed;
 
     public GameObject checkpointPanel;
 
@@ -21,12 +24,13 @@ public class Teleport : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         checkpointPanel.SetActive(true);
-        wooshAudio.Play();
+        wooshAudio.PlayOneShot(audioClip, 0.3f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         checkpointPanel.SetActive(false);
-        wooshAudio.Play();
+       // wooshAudio.PlayOneShot(audioClip);
     }
+
 }
