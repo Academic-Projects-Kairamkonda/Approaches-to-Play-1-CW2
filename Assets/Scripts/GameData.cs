@@ -124,6 +124,26 @@ namespace ATP1_CW2
             checkpoint = Checkpoint.CheckpointOne;
             UpdatePlayerPosition();
         }
+
+        public void Checkpoint2()
+        {
+            checkpoint = Checkpoint.CheckpointTwo;
+            UpdatePlayerPosition();
+        }
+
+        public void Checkpoint3()
+        {
+            checkpoint = Checkpoint.CheckpointThree;
+            UpdatePlayerPosition();
+        }
+
+        public void Checkpoint4()
+        {
+            checkpoint = Checkpoint.CheckpointFour;
+            UpdatePlayerPosition();
+        }
+
+
     }
 
     public enum Checkpoint
