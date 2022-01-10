@@ -143,6 +143,10 @@ namespace ATP1_CW2
             UpdatePlayerPosition();
         }
 
+        public void PlayAgain()
+        {
+            Checkpoint1();
+        }
 
     }
 
